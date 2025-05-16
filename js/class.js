@@ -105,15 +105,94 @@ let cars = false;
 console.log(typeof cars);
 
 function addName(a, b) {
-  return a + ' ' + b;
+  return a + " " + b;
 }
 
 function addCompliment(gender) {
-  return ' is a nice ' + gender
+  return " is a nice " + gender;
 }
 
-let myFullName = addName("onyinye", "Stephanie");
+let myFullName = addName("Onyinyechi", "Stephanie");
 let yourName = addName("olisa", "emeka");
 
 console.log(myFullName + addCompliment("girl"));
-console.log(yourName + addCompliment("guy"));
+console.log(yourName + addCompliment(""));
+
+let compliment = addCompliment("were-wolf");
+let greeting = "Hi, " + myFullName + compliment;
+
+console.log(greeting);
+
+let student = {
+  firstName: "Olisa",
+  lastName: "Emeka",
+  age: 21,
+  height: 5.1,
+  fullname: function () {
+    return (this.firstName + " " + this.lastName).toUpperCase();
+  },
+  hobbies: { fun: "fooball", serious: "coding" },
+  address: {
+    city: "enugu",
+    village: "nsukka",
+    vacation: { place1: "madrid", place2: "barcelona" },
+  },
+};
+
+console.log(student.firstName);
+console.log(student["lastName"]);
+
+// student.fullname = function() {
+//   return this.firstName + " " + this.lastName;
+// }
+
+console.log(student.fullname());
+
+let olisaJSClass = student;
+olisaJSClass.lastName = "NoName";
+// student.lastName = "";
+student.nationality = "Canadian";
+delete student.nationality;
+
+console.log(olisaJSClass.lastName);
+console.log(student.nationality);
+console.log("His serious hobby is " + student.hobbies.serious);
+console.log(
+  "His dream city is " +
+    student["address"]["vacation"].place1 +
+    " not " +
+    student.address.vacation.place2
+);
+// console.log(student);
+
+const olisa = Object.entries(student);
+console.log(olisa);
+
+// let num2 = 2;
+// let num3 = num2;
+// num3 = 3;
+// console.log((num3));
+// console.log((num2));
+
+function Person(n = "chisom", h = 5.7) {
+  this.name = n;
+  this.age = 21;
+  this.height = h;
+  this.weight = function weight() {
+    return (this.height + this.age) / 2;
+  }
+}
+Person.prototype.class = "js";
+
+const meSelf = new Person("Onyinye", 5.6);
+const himSelf = new Person("Olisa", 5.9);
+const herSelf = new Person();
+herSelf.nationality = "Chinese";
+himSelf.address = "Enugu";
+meSelf.changeAge = function (h) {
+  this.age = h;
+}
+
+console.log(meSelf.changeAge(22));
+console.log(himSelf);
+console.log(herSelf);
